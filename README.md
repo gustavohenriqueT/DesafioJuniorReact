@@ -75,7 +75,7 @@ Implementação de um adaptador customizado no Axios para interceptar chamadas e
 
 ### 1️⃣ Clone o repositório
 
-git clone https://github.com/seu-usuario/painel-vulkan.git
+git clone https://github.com/gustavohenriqueT/DesafioJuniorReact.git
 
 ### 2️⃣ Instale as dependências
 
