@@ -51,10 +51,15 @@ export const handleMockRoutes = (
 	});
 
 	if (url === "/login" && method === "post") {
-		if (parsedData?.email && parsedData?.password?.length >= 6) {
-			return createResponse(200, { access_token: "fake-jwt-token" });
+		const isUserValid =
+			parsedData?.email === "admin@vulkan.com" &&
+			parsedData?.password === "123456";
+		if (isUserValid) {
+			return createResponse(200, { access_token: "fake-jtw-token" });
 		}
-		throw createResponse(401, { message: "Credenciais inválidas" });
+		throw createResponse(401, {
+			message: "Usuário ou senha inválidos. Tente admin@vulkan.com / 123456",
+		});
 	}
 
 	if (url === "/domains" && method === "get") {
