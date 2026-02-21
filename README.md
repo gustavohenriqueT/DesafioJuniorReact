@@ -1,73 +1,108 @@
-# React + TypeScript + Vite
+# 🚀 Painel Vulkan - Gerenciamento de Domínios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O Painel Vulkan é uma aplicação frontend moderna desenvolvida para gerenciamento de domínios e contas de e-mail profissional.
 
-Currently, two official plugins are available:
+A aplicação simula um ecossistema real consumindo uma API mockada através de interceptors do Axios e gerenciamento de estado remoto com React Query.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🛠️ Stack Tecnológica
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+O projeto foi construído utilizando as ferramentas mais exigidas pelo mercado:
 
-## Expanding the ESLint configuration
+- React (Vite)
+- TypeScript (Tipagem forte e segurança)
+- TailwindCSS (Estilização utilitária e responsiva)
+- React Query (Gerenciamento de cache e estado do servidor)
+- React Hook Form (Manipulação eficiente de formulários)
+- Zod (Validação de schemas e tipagem de dados)
+- Axios (Cliente HTTP com interceptors)
+- React Hot Toast (Notificações de feedback visual)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🏗️ Arquitetura e Decisões Técnicas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+A estrutura foi pensada para ser escalável e de fácil manutenção, seguindo princípios de Clean Architecture:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🔹 Service Layer
+Toda a lógica de comunicação com a API está isolada em serviços dedicados, desacoplando a UI das requisições.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🔹 Custom Hooks
+Encapsulamento de lógicas complexas de busca de dados para componentes mais limpos e reutilizáveis.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🔹 Schema Validation
+Validações de formulários centralizadas em schemas reutilizáveis do Zod.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🔹 Auth Context
+Gerenciamento global do estado de autenticação e proteção de rotas privadas.
+
+### 🔹 Mock API
+Implementação de um adaptador customizado no Axios para interceptar chamadas e simular um backend real com persistência em memória.
+
+---
+
+## ⚙️ Funcionalidades Implementadas
+
+### 🔐 Autenticação
+
+- Fluxo de login com validação de credenciais
+- Persistência de token falso no localStorage
+- Proteção de rotas (redirecionamento automático se deslogado)
+
+---
+
+### 🌐 Domínios
+
+- Listagem de domínios disponíveis com useQuery
+- Feedback de carregamento (Skeleton Loading)
+- Tratamento de erros
+
+---
+
+### 📧 Gerenciamento de Contas (CRUD)
+
+- Listagem: Visualização de contas vinculadas ao domínio
+- Criação: Cadastro de novas contas com validação de senha e storage
+- Exclusão: Remoção de contas com solicitação de confirmação
+- Bloqueio: Alteração de status (Ativo/Bloqueado) via Toggle
+- Armazenamento: Atualização dinâmica do limite de storage da conta
+- Alteração de Senha: Modal dedicado para redefinição de segurança
+
+---
+
+## 🚀 Como rodar o projeto
+
+### 1️⃣ Clone o repositório
+
+git clone https://github.com/seu-usuario/painel-vulkan.git
+
+### 2️⃣ Instale as dependências
+
+npm install
+
+### 3️⃣ Inicie o servidor de desenvolvimento
+
+npm run dev
+
+---
+
+## 🔑 Credenciais de Acesso (Mock)
+
+Email: admin@vulkan.com  
+Senha: 123456 (mínimo de 6 caracteres)
+
+---
+
+## 📝 Critérios de Sucesso Atendidos
+
+- Invalidação de cache correta com invalidateQueries após cada mutação
+- Injeção automática do Bearer Token via Interceptor do Axios
+- UI responsiva e amigável com TailwindCSS
+- Feedback instantâneo via Toasts para todas as ações do usuário
+
+---
+
+## 👨‍💻 Desenvolvido por
+
+Gustavo Henrique
