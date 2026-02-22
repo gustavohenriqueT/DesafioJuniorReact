@@ -1,5 +1,8 @@
 import { api } from "../api/axios";
-import type { CreateEmailFormData } from "../schemas/email";
+import type {
+	ChangePasswordFormData,
+	CreateEmailFormData,
+} from "../schemas/email";
 
 export interface EmailAccount {
 	id: string;

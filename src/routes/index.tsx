@@ -1,17 +1,17 @@
+import type React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { DomainDetails } from "../pages/DomainDetails";
 import { Domains } from "../pages/Domains";
 import { Login } from "../pages/Login";
 
-
-const PrivateRoute = ({ children }: { children: JSX.Element }) => {
+const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
 	const { isAuthenticated } = useAuth();
 
 	if (!isAuthenticated) {
 		return <Navigate to="/login" replace />;
 	}
-    
+
 	return children;
 };
 
